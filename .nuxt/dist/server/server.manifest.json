@@ -1,0 +1,15 @@
+{
+  "entry": "server.js",
+  "files": {
+    "components/add-contador.js": "components/add-contador.js",
+    "components/contador.js": "components/contador.js",
+    "pages/index.js": "pages/index.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "components/add-contador.js": "components/add-contador.js.map",
+    "components/contador.js": "components/contador.js.map",
+    "pages/index.js": "pages/index.js.map",
+    "server.js": "server.js.map"
+  }
+}
