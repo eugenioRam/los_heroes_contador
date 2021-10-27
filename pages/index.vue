@@ -1,36 +1,23 @@
 <template>
     <div class="content-all">
         
-        <add_contador v-show="show_modal_crear" @close-modal="show_modal_crear = false" />
+        <add_contador v-show="showModal" @close-modal="showModal = false" />
         
         <div v-if="list.length > 0">
-            <div class="buscar_registros_input">
-                <div>
+            <div class="search_area">
+                <div class="webflow-style-input">
                     <input
                         type="text"
                         placeholder="Buscar registros..."
                         name="buscador"
                         class="buscador"
                         v-model="buscador"
-                        @input="buscar_registros"
+                        @input="search"
                     />
                 </div>
-                
-                <div class="contenedor_filtros">
-                    <div class="label_order">Ordenar por:</div>
-                    <div class="ordenar_por_nombre">
-                        <button @click="order_por_nombre" class="btn_ordenar">{{ icono_ordenan_nombre }} Nombre </button>
-                    </div>
-
-                    <div class="ordenar_por_valor">
-                        <button @click="order_por_valor" class="btn_ordenar"> {{ icono_ordenar_valor }} Valor </button>
-                    </div>
-
-                </div>
-
             </div>
 
-           <div v-for="(item, index) in listado_items" :key="index" style="padding-bottom: 15px">
+            <div v-for="(item, index) in listado_items" :key="index" style="padding-bottom: 15px">
                 <contador :item="item" :index="index" />
             </div>
 
@@ -59,18 +46,12 @@ export default {
             datos: {},
             listado_items: [],
             buscador: "",
-            icono_ordenan_nombre: "",
-            icono_ordenar_valor: "",
-            flecha_arriba: "↑",
-            flecha_abajo: "↓",
-            nombre_ascendente: true,
-            valor_ascendente: false,
             
         };
     },
     computed: {
-        show_modal_crear() {
-            return this.$store.state.show_modal_crear
+        showModal() {
+            return this.$store.state.showModal
         },
         list() {
             return this.$store.state.contador.list
@@ -112,7 +93,7 @@ export default {
                 this.listado_items = this.$store.state.contador.list
             }
         },
-        buscar_registros() {
+        search() {
             var items = this.list
             this.listado_items = items.filter(
                 (item) =>
@@ -122,36 +103,6 @@ export default {
         clean_filters() {
             this.$store.commit("filtros/limpiar_filtros");
             this.cargar_inicial()
-        },
-        order_por_nombre() {
-            if (this.nombre_ascendente) {
-                this.$store.commit("contador/ordenar_por_nombre_desc");
-                this.nombre_ascendente = false;
-                this.valor_ascendente = false;
-                this.icono_ordenan_nombre = this.flecha_abajo;
-                this.icono_ordenar_valor = "";
-            } else {
-                this.$store.commit("contador/ordenar_por_nombre_asc");
-                this.nombre_ascendente = true;
-                this.valor_ascendente = false;
-                this.icono_ordenan_nombre = this.flecha_arriba;
-                this.icono_ordenar_valor = "";
-            }
-        },
-        order_por_valor() {
-            if (this.valor_ascendente) {
-                this.$store.commit("contador/ordenar_por_valor_desc");
-                this.nombre_ascendente = false;
-                this.valor_ascendente = false;
-                this.icono_ordenan_nombre = "";
-                this.icono_ordenar_valor = this.flecha_abajo;
-            } else {
-                this.$store.commit("contador/ordenar_por_valor_asc");
-                this.valor_ascendente = true;
-                this.nombre_ascendente = false;
-                this.icono_ordenan_nombre = "";
-                this.icono_ordenar_valor = this.flecha_arriba;
-            }
         },
     },
     created() {
@@ -166,29 +117,11 @@ export default {
     .grid-container {
         display: grid;
         min-height: 100vh;
-        grid-template-rows: 8vh auto 8vh;
+        grid-template-rows: 20vh auto 8vh;
         grid-template-areas:
             "header"
             "main"
             "footer";
-    }
-    .label_order {
-        color: #000000;
-        font-size: 1rem;
-        font-weight: 700;
-        letter-spacing: 1px;
-    }
-    .contenedor_filtros {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        text-align: center;
-    }
-    .ordenar_por_nombre {
-        padding-left: 1% !important;
-    }
-    .ordenar_por_valor {
-        padding-left: 1% !important;
     }
     .header {
         grid-area: header;
@@ -244,24 +177,9 @@ export default {
         padding-right: 0%;
     }
 }
-.buscar_registros_input {
+.search_area {
     padding: 1% 0;
-    display: flex;
-    flex-direction: row;
-}
-.contenedor_filtros {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-align: center;
-}
-.ordenar_por_nombre {
-    padding-left: 1% !important;
-    min-width: 120px;
-}
-.ordenar_por_valor {
-    padding-left: 3% !important;
-    min-width: 120px;
+
 }
 .content-all {
     padding: 0px 8%;
@@ -273,8 +191,5 @@ export default {
         text-align: center;
         vertical-align: middle;
         
-}
-button {
-    border-radius: 25px !important;
-}
+    }
 </style>

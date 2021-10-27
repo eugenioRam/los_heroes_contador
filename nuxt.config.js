@@ -1,10 +1,10 @@
 export default {
-  // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
-
   // Global page headers: https://go.nuxtjs.dev/config-head
+  target: 'static',
+  ssr: false,
+
   head: {
-    title: 'los_heroes-contadores',
+    title: 'los_heroes_contadores',
     htmlAttrs: {
       lang: 'en'
     },

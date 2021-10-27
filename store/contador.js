@@ -1,7 +1,7 @@
 export const state = () => ({
     list: [],
     total: 0,
-    cantidad_contadores:0
+    number_counters:0
 })
 export const actions = {
     add_cantidad_contador({ commit, state }, data) {
@@ -35,7 +35,7 @@ export const mutations = {
         state.total = data
     },
     actualizar_numero_contadores_mutation(state,data){
-        state.cantidad_contadores = data
+        state.number_counters = data
     },
     guardar_contador_mutation(state, data) {
         state.list.push({name: data.name, value: Number(data.value)})
