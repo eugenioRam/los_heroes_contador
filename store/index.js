@@ -1,14 +1,14 @@
 export const state = () => ({
-	showModal: false,
+	show_modal_crear: false,
 })
 
 export const mutations = {
     toggleModal (state) {
-        state.showModal = !state.showModal
+        state.show_modal_crear = !state.show_modal_crear
     }
 }
 export const getters = {
-    showModal: state => {
-        return state.showModal
+    show_modal_crear: state => {
+        return state.show_modal_crear
     }
 }

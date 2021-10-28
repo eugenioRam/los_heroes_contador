@@ -1,6 +1,5 @@
 export const state = () => ({
     filter: [],
-    list_new:[],
     filter_active: false,
     filterHigher :false,
     filterSmaller :false,

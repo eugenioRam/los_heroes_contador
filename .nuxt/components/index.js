@@ -1,7 +1,7 @@
-export const AddContador = () => import('../..\\components\\add_contador.vue' /* webpackChunkName: "components/add-contador" */).then(c => wrapFunctional(c.default || c))
-export const Contador = () => import('../..\\components\\contador.vue' /* webpackChunkName: "components/contador" */).then(c => wrapFunctional(c.default || c))
-export const Footer = () => import('../..\\components\\footer.vue' /* webpackChunkName: "components/footer" */).then(c => wrapFunctional(c.default || c))
-export const Header = () => import('../..\\components\\header.vue' /* webpackChunkName: "components/header" */).then(c => wrapFunctional(c.default || c))
+export { default as AddContador } from '../..\\components\\add_contador.vue'
+export { default as Contador } from '../..\\components\\contador.vue'
+export { default as Footer } from '../..\\components\\footer.vue'
+export { default as Header } from '../..\\components\\header.vue'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {

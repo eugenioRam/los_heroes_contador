@@ -217,7 +217,7 @@ export default {
     padding-right: 8%;
     position: absolute;
     bottom: 86px;
-    right: -91px;
+    right: -4%;
 }
 .buscador {
     background-color: white;
@@ -225,7 +225,6 @@ export default {
 }
 
 .contenedor_filtro_mayor_menor_igual {
-    text-align: carga_inicial !important;
     padding-left: 8%;
 }
 
